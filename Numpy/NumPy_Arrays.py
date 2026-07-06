@@ -50,4 +50,12 @@ import numpy as np
 # arr = np.linspace(0,100 , 5 , dtype=int)
 # print(arr)
 
-
+#Array Attributes
+arr = np.array([[1,4,34,3,2],[43,42,67,89,45]])
+print(arr)
+print(arr.ndim)
+print(arr.shape)
+print(arr.size)
+print(arr.dtype)
+print(arr.itemsize)
+print(arr.nbytes)

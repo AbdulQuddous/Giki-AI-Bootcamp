@@ -61,3 +61,34 @@ class DatasetLoader:
     def descriptive_statistics(self, df):
 
         return df.describe(include="all")
+    
+    def preprocess_dataframe(self, df, preprocessor):
+
+        processed = df.copy()
+
+        processed["clean_text"] = processed["text"].apply(
+            preprocessor.preprocess
+        )
+
+        return processed
+
+
+    def save_processed_dataset(self, df, file_path):
+
+        df.to_csv(file_path, index=False)
+
+        print(f"Saved: {file_path}")
+
+    def preview_columns(self, df, rows=5):
+
+        columns = [
+            "text",
+            "clean_text",
+            "stem_porter",
+            "stem_lancaster",
+            "stem_snowball",
+            "stem_regexp",
+            "lemma"
+        ]
+
+        print(df[columns].head(rows))
